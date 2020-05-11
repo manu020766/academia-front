@@ -1,24 +1,30 @@
-import { Component, OnInit, HostListener } from '@angular/core'
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core'
+import { Observable, Subscription, fromEvent } from 'rxjs'
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnDestroy {
 
-  // Declare height and width variables
-  // scrHeight:any
-  scrWidth:any
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
   open:boolean
   style:string
 
-  @HostListener('window:resize', ['$event'])
+  constructor() {
+    this.getScreenSize()
+
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe( evt => this.getScreenSize())
+   }
+
   getScreenSize(event?) {
         // this.scrHeight = window.innerHeight
-        this.scrWidth = window.innerWidth
+        const scrWidth = window.innerWidth
 
-        if (this.scrWidth > 1024) {
+        if (scrWidth > 1024) {
           this.open = true
           this.style = 'side'
         } else {
@@ -27,9 +33,9 @@ export class NavigationComponent implements OnInit {
         } 
   }
 
-  constructor() {
-    this.getScreenSize()
-   }
+  ngOnDestroy() {
+    this.resizeSubscription$.unsubscribe()
+  }
 
   ngOnInit(): void {}
 
