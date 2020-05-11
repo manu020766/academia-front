@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened #sidenav role="navigation">
+hola
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (sideNavToggle)="sidenav.toggle()"></app-header>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

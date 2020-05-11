@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../shared/material.module'
 import { RouterModule } from '@angular/router'
-
-
+import { NavigationModule } from '../shared/navigation/navigation.module'
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    NavigationModule
   ],
   exports: [DashboardComponent]
 })
