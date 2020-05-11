@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard.component';
-import { MaterialModule } from '../shared/material.module'
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { DashboardComponent } from './dashboard.component'
 import { RouterModule } from '@angular/router'
 import { NavigationModule } from '../shared/navigation/navigation.module'
 
@@ -11,7 +10,6 @@ import { NavigationModule } from '../shared/navigation/navigation.module'
   ],
   imports: [
     CommonModule,
-    MaterialModule,
     RouterModule,
     NavigationModule
   ],
