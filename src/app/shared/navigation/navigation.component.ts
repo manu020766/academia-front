@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Observable, Subscription, fromEvent } from 'rxjs'
 
 @Component({
@@ -21,7 +21,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
    }
 
   getScreenSize(event?) {
-        // this.scrHeight = window.innerHeight
         const scrWidth = window.innerWidth
 
         if (scrWidth > 1024) {
