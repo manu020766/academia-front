@@ -1,9 +1,29 @@
-<mat-sidenav-container>
+<!-- <mat-sidenav-container>
     <mat-sidenav [mode]="style" [opened]="open" #sidenav role="navigation">
-hola
+        <main>
+            hola desde mat1
+        </main>
     </mat-sidenav>
     <mat-sidenav-content>
         <app-header (sideNavToggle)="sidenav.toggle()"></app-header>
-        <ng-content></ng-content>
+            <main>
+                <ng-content></ng-content>
+            </main>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<div class="container-header">
+    <app-header (sideNavToggle)="sidenav.toggle()"></app-header>
+    <mat-sidenav-container>
+        <mat-sidenav [mode]="style" [opened]="open" #sidenav role="navigation">
+            <main>
+                hola desde mat1
+            </main>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <main>
+                <ng-content></ng-content>
+            </main>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
