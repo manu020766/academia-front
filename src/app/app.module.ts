@@ -14,11 +14,11 @@ import { DashboardModule } from './dashboard/dashboard.module'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     NotFoundModule,
     LoginModule,
-    DashboardModule
+    DashboardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

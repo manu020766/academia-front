@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'
 import { MatCardModule } from '@angular/material/card'
 import {MatButtonModule} from '@angular/material/button'
 import {MatInputModule} from '@angular/material/input'
-import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSidenavModule} from '@angular/material/sidenav'
-import {MatMenuModule} from '@angular/material/menu';
+import {MatMenuModule} from '@angular/material/menu'
 import {MatIconModule} from '@angular/material/icon'
+import {MatListModule} from '@angular/material/list'
 
 const componentes = [
   MatCardModule,
@@ -14,7 +15,8 @@ const componentes = [
   MatToolbarModule,
   MatSidenavModule,
   MatMenuModule,
-  MatIconModule
+  MatIconModule,
+  MatListModule
 ]
 
 @NgModule({

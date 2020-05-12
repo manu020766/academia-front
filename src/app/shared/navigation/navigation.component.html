@@ -1,28 +1,26 @@
-<!-- <mat-sidenav-container>
-    <mat-sidenav [mode]="style" [opened]="open" #sidenav role="navigation">
-        <main>
-            hola desde mat1
-        </main>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <app-header (sideNavToggle)="sidenav.toggle()"></app-header>
-            <main>
-                <ng-content></ng-content>
-            </main>
-    </mat-sidenav-content>
-</mat-sidenav-container> -->
-
 <div class="container-header">
-    <app-header (sideNavToggle)="sidenav.toggle()"></app-header>
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-icon style="margin: 0 10px 0 15px;">school</mat-icon>
+        <span>Academia</span>
+    </mat-toolbar>
+
     <mat-sidenav-container>
         <mat-sidenav [mode]="style" [opened]="open" #sidenav role="navigation">
             <main>
-                hola desde mat1
+                <mat-nav-list>
+                    <mat-list-item (click)="sidenav.toggle(); navega('/cursos')">CURSOS</mat-list-item>
+                    <mat-list-item (click)="sidenav.toggle(); navega('/alumnos')">ALUMNOS</mat-list-item>
+                    <mat-list-item (click)="sidenav.toggle(); navega('/profesores')">PROFESORES</mat-list-item>
+                    <mat-list-item (click)="sidenav.toggle(); navega('/materias')">MATERIAS</mat-list-item>
+                </mat-nav-list>
             </main>
         </mat-sidenav>
         <mat-sidenav-content>
             <main>
-                <ng-content></ng-content>
+                <router-outlet></router-outlet>
             </main>
         </mat-sidenav-content>
     </mat-sidenav-container>

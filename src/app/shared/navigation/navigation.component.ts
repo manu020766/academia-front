@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Observable, Subscription, fromEvent } from 'rxjs'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-navigation',
@@ -13,7 +14,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   open:boolean
   style:string
 
-  constructor() {
+  constructor(private router:Router) {
     this.getScreenSize()
 
     this.resizeObservable$ = fromEvent(window, 'resize')
@@ -37,5 +38,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {}
+
+  navega(ruta:string) {
+    this.router.navigate([ruta])
+  }
 
 }

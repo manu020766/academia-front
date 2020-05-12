@@ -8,10 +8,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: DashboardComponent,
     children: [
-      { path: 'materias', loadChildren: () => import('./materias/materias.module').then(m => m.MateriasModule) },
       { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule) },
       { path: 'alumnos', loadChildren: () => import('./alumnos/alumnos.module').then(m => m.AlumnosModule) },
       { path: 'profesores', loadChildren: () => import('./profesores/profesores.module').then(m => m.ProfesoresModule) },
+      { path: 'materias', loadChildren: () => import('./materias/materias.module').then(m => m.MateriasModule) }
     ]
   },
   { path: '**', component: NotFoundComponent }
