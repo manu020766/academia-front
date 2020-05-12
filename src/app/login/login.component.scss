@@ -19,8 +19,8 @@ mat-card {
     text-align: center;
   }
 
-  mat-card-title {
-    color: #3F51B5;
+  mat-card-title > mat-icon {
+    font-size: 3rem;
   }
 
   mat-form-field {
@@ -32,4 +32,10 @@ mat-card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  button {
+    width: 100%;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
