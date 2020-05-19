@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../shared/navigation/navigation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-materias',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MateriasComponent implements OnInit {
 
-  constructor() { }
+  constructor(public navigatioService: NavigationService, private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  salir() {
+    this.navigatioService.toggle()
+    this.router.navigate(['/'])
+  }
+  
 
 }
