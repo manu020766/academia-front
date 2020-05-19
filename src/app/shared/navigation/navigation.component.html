@@ -1,6 +1,6 @@
 <div class="container-header">
     <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button mat-icon-button (click)="toggleSideNav()">
             <mat-icon>menu</mat-icon>
         </button>
         <mat-icon style="margin: 0 10px 0 15px;">school</mat-icon>
@@ -11,10 +11,10 @@
         <mat-sidenav [mode]="style" [opened]="open" #sidenav role="navigation">
             <main>
                 <mat-nav-list>
-                    <mat-list-item (click)="sidenav.toggle(); navega('/cursos')">CURSOS</mat-list-item>
-                    <mat-list-item (click)="sidenav.toggle(); navega('/alumnos')">ALUMNOS</mat-list-item>
-                    <mat-list-item (click)="sidenav.toggle(); navega('/profesores')">PROFESORES</mat-list-item>
-                    <mat-list-item (click)="sidenav.toggle(); navega('/materias')">MATERIAS</mat-list-item>
+                    <mat-list-item (click)="navega('/cursos')">CURSOS</mat-list-item>
+                    <mat-list-item (click)="navega('/alumnos')">ALUMNOS</mat-list-item>
+                    <mat-list-item (click)="navega('/profesores')">PROFESORES</mat-list-item>
+                    <mat-list-item (click)="navega('/materias')">MATERIAS</mat-list-item>
                 </mat-nav-list>
             </main>
         </mat-sidenav>

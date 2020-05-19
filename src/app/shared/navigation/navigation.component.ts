@@ -1,20 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core'
 import { Observable, Subscription, fromEvent } from 'rxjs'
 import { Router } from '@angular/router'
+import { MatSidenav } from '@angular/material/sidenav'
+import { NavigationService } from './navigation.service'
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('sidenav') public sidenav: MatSidenav
 
   resizeObservable$: Observable<Event>
   resizeSubscription$: Subscription
   open:boolean
   style:string
 
-  constructor(private router:Router) {
+  constructor(private router:Router, public navigatioService: NavigationService) {
+    // this.navigatioService.setSidenav(this.sidenav)
     this.getScreenSize()
 
     this.resizeObservable$ = fromEvent(window, 'resize')
@@ -37,9 +41,19 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.resizeSubscription$.unsubscribe()
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  
+  ngAfterViewInit () {
+    this.navigatioService.setSidenav(this.sidenav)
+   }
+
+  toggleSideNav() {
+    // this.sidenav.toggle()
+    this.navigatioService.toggle()
+  }
 
   navega(ruta:string) {
+    this.toggleSideNav()
     this.router.navigate([ruta])
   }
 
