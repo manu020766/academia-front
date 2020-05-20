@@ -105,15 +105,15 @@ export class MateriasService {
 
     this.MateriasDB.forEach((materia) => {
        
-      if (categoriaAnterior === '') { nombres.push({ materia: materia.nombre}) }
+      if (categoriaAnterior === '') { nombres.push({ name: materia.nombre}) }
 
       if (categoriaAnterior !== '') {
         if  ((categoriaAnterior === materia.categoria) && (subCategoriaAnterior === materia.subCategoria)) {
-          nombres.push({ materia: materia.nombre})
+          nombres.push({ name: materia.nombre})
         } else {
             this.subCategoriasMaterias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior, materias: nombres })
             nombres = []
-            nombres.push({ materia: materia.nombre})
+            nombres.push({ name: materia.nombre})
         }
       }
 
