@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import {NestedTreeControl} from '@angular/cdk/tree'
 import {MatTreeNestedDataSource} from '@angular/material/tree'
+import { MateriasService } from './materias.service';
 
 /**
  * Food data with nested structure.
@@ -53,175 +54,26 @@ const TREE_DATA: FoodNode[] = [
   },
 ];
 
-
-
 @Component({
   selector: 'app-materias',
   templateUrl: './materias.component.html',
   styleUrls: ['./materias.component.scss']
 })
 export class MateriasComponent implements OnInit {
-
-  private readonly MateriasDB = [
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "JavaScript"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "React"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "Angular"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "Node"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "Vue"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Desarrollo Web",
-      nombre: "Svelte"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Aplicaciones móviles",
-      nombre: "Desarrollo en Android"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Aplicaciones móviles",
-      nombre: "Desarrollo en iOs"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Aplicaciones móviles",
-      nombre: "Ionic"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Aplicaciones móviles",
-      nombre: "NativeScript"
-    },
-    {
-      categoria: "Desarrollo",
-      subCategoria: "Aplicaciones móviles",
-      nombre: "React Native"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "Hardware",
-      nombre: "Arduino"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "Hardware",
-      nombre: "Raspberry Pi"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "Sistemas operativos",
-      nombre: "Linux"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "Sistemas operativos",
-      nombre: "Windows Server"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "DevOps",
-      nombre: "Docker"
-    },
-    {
-      categoria: "Informática y Software",
-      subCategoria: "DevOps",
-      nombre: "Kubernetes"
-    }
-  ]
-
-  // { name: 'Desarrollos' }, 
-  // { name: 'Informática y Software' }
-
-  // TREE_DATA: FoodNode[] = []
-
-  categorias = []       // Categorias para el autocompletado del input de categorias
-  subCategorias = []    // Contiene la relación de Categoria -> subCategoria
-  subCategoria = []     // Dependiendo Categoria del input de Categoria, se optienen las subcategorias del input de subCategoria 
-  subCategoriasMaterias = [] // Relacion Categorias -> subCategorias -> materias
   
-  constructor(public navigatioService: NavigationService, private router: Router) { 
-    
-    let categoriaAnterior = ''
-    let subCategoriaAnterior = ''
-    let nombres = []
-
-    this.MateriasDB.forEach((materia) => {
-       
-      if (categoriaAnterior === '') { nombres.push({ materia: materia.nombre}) }
-
-      if (categoriaAnterior !== '') {
-        if  ((categoriaAnterior === materia.categoria) && (subCategoriaAnterior === materia.subCategoria)) {
-          nombres.push({ materia: materia.nombre})
-        } else {
-            this.subCategoriasMaterias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior, materias: nombres })
-            nombres = []
-            nombres.push({ materia: materia.nombre})
-        }
-      }
-
-      if (categoriaAnterior !== materia.categoria) {       
-        categoriaAnterior = materia.categoria
-
-        console.log(`Categoria: ${categoriaAnterior}`)
-        this.categorias.push(categoriaAnterior)
-      }
-
-      if (categoriaAnterior === materia.categoria) {
-        if (subCategoriaAnterior !== materia.subCategoria) {
-          subCategoriaAnterior = materia.subCategoria
-          
-
-          console.log(`subCategoria: ${subCategoriaAnterior}`)
-          this.subCategorias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior })
-        }       
-      }
-      
-      console.log(`Nombre: ${materia.nombre}`)
-    })
-    if (categoriaAnterior !== '') {
-        this.subCategoriasMaterias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior, materias: nombres })
-    }
-    
-
-
-    console.log('-------------------------')
-    console.log(this.categorias)
-    console.log(this.subCategorias)
-    console.log(this.subCategoriasMaterias)
-    console.log('-------------------------')
-
-    console.log('Desarrollo:')
-    console.log(this.subCategorias.filter( s => s.categoria === "Desarrollo").map(sub => (sub.subCategoria)))
-
-    console.log('Informática y Software:')
-    console.log(this.subCategorias.filter( s => s.categoria === "Informática y Software").map(sub => (sub.subCategoria)))
-    console.log('-------------------------')
-
+  constructor(public navigatioService: NavigationService,
+              private router: Router,
+              private materiasService: MateriasService
+              ) { 
     this.dataSource.data = TREE_DATA
   }
 
   ngOnInit(): void {
+    console.log('Categorias:', this.materiasService.categorias)
+    console.log('subCategorias:', this.materiasService.subCategorias)
+    console.log('subCategoriasMaterias:', this.materiasService.subCategoriasMaterias)
+    console.log('recuparar Subcategorias - por categoria', this.materiasService.recuperarSubCatagoriaPorCategoria("Desarrollo"))
+    console.log('recuparar Subcategorias - por categoria', this.materiasService.recuperarSubCatagoriaPorCategoria("Informática y Software"))
   }
 
   salir() {
