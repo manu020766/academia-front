@@ -7,6 +7,7 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatMenuModule} from '@angular/material/menu'
 import {MatIconModule} from '@angular/material/icon'
 import {MatListModule} from '@angular/material/list'
+import {MatFormFieldModule} from '@angular/material/form-field'
 
 const componentes = [
   MatCardModule,
@@ -16,7 +17,8 @@ const componentes = [
   MatSidenavModule,
   MatMenuModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
+  MatFormFieldModule
 ]
 
 @NgModule({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MateriasRoutingModule } from './materias-routing.module';
+import { MaterialModule } from '../shared/material.module'
 import { MateriasComponent } from './materias.component';
 
 
@@ -9,7 +10,8 @@ import { MateriasComponent } from './materias.component';
   declarations: [MateriasComponent],
   imports: [
     CommonModule,
-    MateriasRoutingModule
+    MateriasRoutingModule,
+    MaterialModule
   ]
 })
 export class MateriasModule { }

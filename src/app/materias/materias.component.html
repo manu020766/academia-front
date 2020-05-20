@@ -1,2 +1,30 @@
-<p>materias works!</p>
-<button (click)="salir()">Salir</button>
+<mat-card>
+    <mat-card-header>
+        <h1>Materias</h1>
+    </mat-card-header>
+    <img mat-card-imag src="../assets/img/materias.jpg" alt="logo materias">
+    <mat-card-content>
+        <div id="contenedor-formulario">
+            <form id="formulario" action="">
+                <mat-form-field>
+                    <mat-label>Categoría</mat-label>
+                    <input matInput placeholder="Categoría">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Subcategoría</mat-label>
+                    <input matInput placeholder="Subcategoría">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Matería</mat-label>
+                    <input matInput placeholder="Matería">
+                </mat-form-field>
+            </form>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button color="accent" (click)="salir()">Salir</button>
+        <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+    </mat-card-actions>
+</mat-card>
+
+

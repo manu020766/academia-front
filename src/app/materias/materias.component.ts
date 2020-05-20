@@ -18,6 +18,10 @@ export class MateriasComponent implements OnInit {
     this.navigatioService.toggle()
     this.router.navigate(['/'])
   }
+
+  guardar() {
+    alert('Materia guardada')
+  }
   
 
 }
