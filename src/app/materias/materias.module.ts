@@ -10,8 +10,8 @@ import { MateriasComponent } from './materias.component';
   declarations: [MateriasComponent],
   imports: [
     CommonModule,
-    MateriasRoutingModule,
-    MaterialModule
+    MaterialModule,
+    MateriasRoutingModule
   ]
 })
 export class MateriasModule { }

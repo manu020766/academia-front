@@ -8,6 +8,7 @@ import {MatMenuModule} from '@angular/material/menu'
 import {MatIconModule} from '@angular/material/icon'
 import {MatListModule} from '@angular/material/list'
 import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatTreeModule} from '@angular/material/tree'
 
 const componentes = [
   MatCardModule,
@@ -18,7 +19,8 @@ const componentes = [
   MatMenuModule,
   MatIconModule,
   MatListModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatTreeModule
 ]
 
 @NgModule({
