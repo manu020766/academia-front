@@ -119,8 +119,6 @@ export class MateriasService {
 
       if (categoriaAnterior !== materia.categoria) {       
         categoriaAnterior = materia.categoria
-
-        console.log(`Categoria: ${categoriaAnterior}`)
         this.categorias.push(categoriaAnterior)
       }
 
@@ -128,33 +126,27 @@ export class MateriasService {
         if (subCategoriaAnterior !== materia.subCategoria) {
           subCategoriaAnterior = materia.subCategoria
           
-
-          console.log(`subCategoria: ${subCategoriaAnterior}`)
           this.subCategorias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior })
         }       
       }
-      
-      console.log(`Nombre: ${materia.nombre}`)
     })
     if (categoriaAnterior !== '') {
         this.subCategoriasMaterias.push({ categoria: categoriaAnterior, subCategoria: subCategoriaAnterior, materias: nombres })
     }
-    
 
+    // console.log('-------------------------')
+    // console.log(this.categorias)
+    // console.log(this.subCategorias)
+    // console.log('subCategoriasMaterias:')
+    // console.log(this.subCategoriasMaterias)
+    // console.log('-------------------------')
 
-    console.log('-------------------------')
-    console.log(this.categorias)
-    console.log(this.subCategorias)
-    console.log('subCategoriasMaterias:')
-    console.log(this.subCategoriasMaterias)
-    console.log('-------------------------')
+    // console.log('Desarrollo:')
+    // console.log(this.subCategorias.filter( s => s.categoria === "Desarrollo").map(sub => (sub.subCategoria)))
 
-    console.log('Desarrollo:')
-    console.log(this.subCategorias.filter( s => s.categoria === "Desarrollo").map(sub => (sub.subCategoria)))
-
-    console.log('Informática y Software:')
-    console.log(this.subCategorias.filter( s => s.categoria === "Informática y Software").map(sub => (sub.subCategoria)))
-    console.log('-------------------------')
+    // console.log('Informática y Software:')
+    // console.log(this.subCategorias.filter( s => s.categoria === "Informática y Software").map(sub => (sub.subCategoria)))
+    // console.log('-------------------------')
 
   }
 

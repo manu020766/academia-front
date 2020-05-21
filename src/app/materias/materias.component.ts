@@ -15,45 +15,6 @@ interface FoodNode {
   children?: FoodNode[]
 }
 
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Desarrollo',
-    children: [
-      {
-        name: 'Desarrollo Web',
-        children: [
-          {name: 'JavaScript'},
-          {name: 'Angular'},
-          {name: 'React'},
-        ]
-      }, {
-        name: 'Aplicaciones móviles',
-        children: [
-          {name: 'Desarrollo en Android'},
-          {name: 'Desarrollo en iOs'},
-        ]
-      },
-    ]
-  }, {
-    name: 'Informática y Software',
-    children: [
-      {
-        name: 'Sistemas operativos',
-        children: [
-          {name: 'Linux'},
-          {name: 'Windows Server'},
-        ]
-      }, {
-        name: 'Hardware',
-        children: [
-          {name: 'Arduino'},
-          {name: 'Raspberry Pi'},
-        ]
-      },
-    ]
-  },
-];
-
 @Component({
   selector: 'app-materias',
   templateUrl: './materias.component.html',
@@ -66,7 +27,6 @@ export class MateriasComponent implements OnInit {
               private router: Router,
               private materiasService: MateriasService
               ) { 
-    //this.dataSource.data = TREE_DATA
   }
 
   ngOnInit(): void {
@@ -84,51 +44,20 @@ export class MateriasComponent implements OnInit {
     categorias.forEach((c)=> {
       let categoria = c
       let subCategorias =  materiasTodo.filter(s => s.categoria === c)
-
-      console.log(categoria)
       
       datosCategoria.name = categoria
       
 
       subCategorias.forEach((s) => {
-        // console.log(s.subCategoria)
-        //console.log('s.materias', s.materias)
-
         datosCategoria.children.push({ name: s.subCategoria, children: s.materias })
       })
-      
-      console.log('----------------------------')
-      console.log(datosCategoria)
 
-      // console.log(categoria, subCategorias)
       this.TREE_DATA_COPIA.push(datosCategoria)
       datosCategoria = { name: '', children: [] }
     })
-    console.log('----------------------------')
-    console.log('TREE_DATA_COPIA', this.TREE_DATA_COPIA)
 
-
-
-
-    // let materiasTodo = this.materiasService.subCategoriasMaterias // categorias - subcategorias - materias
-    // let categoriaAnterior = ''
-    // let categoria
-    // materiasTodo.forEach((materia) => {
-
-    //   categoria = materia.categoria
-    //   if (categoriaAnterior !== categoria) {
-    //     categoriaAnterior = categoria
-    //     categoria = { name: categoria }
-
-
-
-    //     this.TREE_DATA_COPIA.push(categoria)
-    //   }
-
-
-    // })
-    // console.log('TREE_DATA_COPIA', this.TREE_DATA_COPIA)
     this.dataSource.data = this.TREE_DATA_COPIA
+    console.log(this.TREE_DATA_COPIA)
 
   }
 
