@@ -1,5 +1,7 @@
+import { Curso } from './Curso'
+
 export interface Alumno {
-    alumnoId: number
+    id: number
     nombre: string
     apellidos: string
     dni: string
@@ -9,4 +11,5 @@ export interface Alumno {
     poblacion: string
     foto: string
     activo: boolean
+    cursos?: Curso[]
 }
