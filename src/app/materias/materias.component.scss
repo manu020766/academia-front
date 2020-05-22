@@ -12,6 +12,10 @@ mat-card {
     width: 250px;
 }
 
+#materias-tree {
+    flex: 1
+}
+
 img {
     width: 200px;
 }
@@ -38,4 +42,11 @@ button {
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
+}
+
+
+@media (max-width: 600px) {
+    mat-card {
+        flex: 1;
+    }
 }
