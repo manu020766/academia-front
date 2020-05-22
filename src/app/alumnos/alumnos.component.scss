@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@media (max-width: 600px) {
+    mat-card {
+        flex: 1;
+    }
+}
+
+#formulario-alumno {
+    flex: 1;
+}
